@@ -1,34 +1,4 @@
 #include "genetic.h"
-
-void print_dna(int *dna, int seq_length) {
-  // for (int i = 0; i < seq_length; ++i) {
-  //   cout << dna[i] << " ";
-  // }
-  // cout << endl;
-  for (int i = 0; i < seq_length; ++i) {
-    for (int j = 0; j < dna[i]; ++j) {
-      cout << "0";
-    }
-    cout << "#";
-    for (int j = dna[i] + 1; j < seq_length; ++j) {
-      cout << "0";
-    }
-    cout << endl;
-  }
-}
-
-int analy_dna(int *dna, int seq_length) {
-  int pair_num = 0;
-  for (int i = 0; i < seq_length - 1; ++i) {
-    for (int j = i + 1; j < seq_length; ++j) {
-      if (dna[i] == dna[j] || (dna[i] + j == dna[j] + i) ||
-          (dna[i] - j == dna[j] - i))
-        pair_num++;
-    }
-  }
-  return pair_num;
-}
-
 void Individuality::_copy_dna(int *dst, int *src) {
   memcpy(dst, src, N * sizeof(int));
 }
@@ -56,7 +26,7 @@ int Individuality::mutate() {
 unique_ptr<int> Population::get_best_value() {
   for (int i = 0; i < M; ++i) {
     auto dna = _individualities[i]->get_dna(nullptr);
-    int value = analy_dna(dna.get(), N);
+    int value = analy_solution(dna.get(), N);
     // cout << value << endl;
     if (value == 0) {
       return dna;
@@ -69,7 +39,8 @@ int Population::_selection() {
             [&](Individuality *&a, Individuality *&b) {
               auto a_dna = a->get_dna(nullptr);
               auto b_dna = b->get_dna(nullptr);
-              return analy_dna(a_dna.get(), N) < analy_dna(b_dna.get(), N);
+              return analy_solution(a_dna.get(), N) <
+                     analy_solution(b_dna.get(), N);
             });
   for (int i = M / 4; (size_t)i < _individualities.size(); ++i)
     delete _individualities[i];
@@ -143,7 +114,7 @@ Population::Population(int M, int N, double T) : M(M), N(N), T(T) {
 
 Individuality::Individuality(int N, double T)
     : N(N), _dna(new int[N]), _mutate_rate(T) {}
-
+/*
 int main(void) {
   srand((unsigned int)time(nullptr));
   int queen_count = 0;
@@ -160,7 +131,8 @@ int main(void) {
   Nature nature(indi_count, queen_count, max_gen, mutate_rate);
   auto solution = nature.evolve_population(nullptr);
   if (solution)
-    print_dna(solution.get(), queen_count);
+    print_solution(solution.get(), queen_count);
   else
     cout << "Solution not found!" << endl;
 }
+*/

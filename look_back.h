@@ -1,9 +1,6 @@
 #ifndef LOOK_BACK_H
 #define LOOK_BACK_H
-#include <iostream>
-#include <string.h>
-#include <vector>
-using namespace std;
+#include "utils.h"
 
 class LookBack {
 public:

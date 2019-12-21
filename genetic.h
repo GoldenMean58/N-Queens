@@ -1,19 +1,6 @@
 #ifndef GENETIC_H
 #define GENETIC_H
-#include <algorithm>
-#include <iostream>
-#include <memory>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include <utility>
-#include <vector>
-using std::cin;
-using std::cout;
-using std::endl;
-using std::pair;
-using std::unique_ptr;
-using std::vector;
+#include "utils.h"
 
 // constexpr float CROSS_RATE = 0.6;
 class Individuality {
