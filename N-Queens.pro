@@ -31,7 +31,9 @@ SOURCES += \
     hill_climbing.cpp \
     look_back.cpp \
     simulated_anneal.cpp \
-    utils.cpp
+    utils.cpp \
+    drawboard.cpp \
+    dialog.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -39,10 +41,13 @@ HEADERS += \
     hill_climbing.h \
     look_back.h \
     simulated_anneal.h \
-    utils.h
+    utils.h \
+    drawboard.h \
+    dialog.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    dialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
