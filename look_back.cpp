@@ -26,6 +26,8 @@ void LookBack::look_back_queen(int index) {
       look_back_queen(index + 1);
       queen_pos[index] = 0;
     }
+    if (solutions.size() > 0)
+      return;
   }
 }
 void LookBack::print() {

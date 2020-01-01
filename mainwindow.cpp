@@ -25,7 +25,7 @@ void MainWindow::look_back() {
   clock_t start_t = clock();
   lb.look_back_queen(0);
   clock_t end_t = clock();
-  db->set_data(lb.solutions[1]);
+  db->set_data(lb.solutions[0]);
   db->update();
   float time_cost = (end_t - start_t) * 1000 * 1000 / CLOCKS_PER_SEC;
   QString time_str = QString::number(time_cost);
